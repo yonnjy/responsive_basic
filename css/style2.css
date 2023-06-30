@@ -1,0 +1,325 @@
+* {
+    outline: 1px solid --tomato;
+}
+
+/* color size 등을 정의해놓고 변수 선언해서 쓰기 (ie 대응 안함)*/
+:root {
+    --line: #f2f2f2;
+    --wc: #ffffff;
+    --gc50: rgba(0, 0, 0, 0.5);
+    --bs: 60rem;
+}
+
+/*
+이렇게 쓸수도있다 알아만두기
+.bs {
+    font-size: var(--bs);
+} */
+
+html {
+    /* rem으로 쓰려구 100/16 1px=1rem */
+    font-size: 6.25%;
+}
+
+@media (max-width: 540px) {
+    html {
+        font-size: 0.25641025641vw;
+        /* 소수 */
+        /* 390size에 맞춤 (16/390*6.25/100) 디자인 사이즈 */
+    }
+}
+
+body {
+    font-size: 16rem;
+    word-break: keep-all;
+}
+
+p {
+    /* line-height = 3rem + 3rem */
+    line-height: 1.375;
+    margin: -3rem 0;
+}
+
+.inner {
+    max-width: 1200rem;
+    margin: 0 auto;
+    padding: 0 15rem;
+
+    .section {
+        position: relative;
+        padding: 100rem 0;
+
+        .title {
+            max-width: 1200rem;
+            margin: 0 auto 30rem auto;
+            padding: 0 15rem;
+        }
+
+        & h2 {
+            font-size: 30rem;
+            font-weight: 700;
+            margin: 0 0 10rem 0;
+        }
+    }
+}
+
+/* 시각장애인을 위한 대체 텍스트 */
+.blind {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+
+/* 위는 common, 여기부터 style시작 */
+#Header {
+    border-bottom: 1px solid var(--line);
+
+    .inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100rem;
+    }
+
+    & h1 {
+        flex: 0 0 170rem;
+    }
+}
+
+@media (max-width: 540px) {
+    #Header h1.on {
+        position: fixed;
+        z-index: 1001;
+    }
+}
+
+#gnb {
+    >ul {
+        display: flex;
+        gap: 40rem;
+    }
+}
+
+@media (max-width: 540px) {
+    #gnb {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: var(--wc);
+        z-index: 1000;
+
+        &.on {
+            left: 0;
+        }
+
+        >ul {
+            flex-direction: column;
+            gap: 0;
+            padding: 100rem 30rem 0 30rem;
+        }
+    }
+}
+
+.mobile_btn {
+    display: none;
+}
+
+@media (max-width: 540px) {
+    .search_area {
+        display: none;
+    }
+
+    .mobile_btn {
+        display: block;
+
+        position: fixed;
+        top: 30rem;
+        right: 30rem;
+        z-index: 1000;
+    }
+
+    .mobile_btn i {
+        padding: 10rem;
+        font-size: 20rem;
+        background: var(--line);
+        border-radius: 3px;
+    }
+}
+
+/* MainVisual */
+#MainVisual {
+    position: relative;
+
+    .main_slide {
+        .itm {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: calc(100vh - 300rem);
+
+            .slogan {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-width: 1200rem;
+                width: 100%;
+                padding: 0 15rem;
+
+                h3 {
+                    color: var(--wc);
+                    font-size: var(--bs);
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    margin: 0 0 20rem 0;
+                    text-shadow: 0 0 10rem rgba(0, 0, 0, 0.5);
+                }
+
+                & p {
+                    color: var(--wc);
+                    text-shadow: 0 0 10rem rgba(0, 0, 0, 0.5);
+                }
+            }
+        }
+
+        .itm01 {
+            background: url(../images/mainvisual01.jpg) no-repeat center center/cover;
+        }
+
+        .itm02 {
+            background: url(../images/mainvisual02.jpg) no-repeat center center/cover;
+        }
+
+        .itm03 {
+            background: url(../images/mainvisual03.jpg) no-repeat center center/cover;
+        }
+    }
+
+    .arrows {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 1400rem;
+        width: 100%;
+        padding: 015rem;
+        z-index: 999;
+        display: flex;
+        justify-content: space-between;
+
+        & i {
+            font-size: 20rem;
+            padding: 10rem;
+            color: var(--wc);
+            background: var(--gc50);
+            border-radius: 50%;
+        }
+    }
+}
+
+@media (max-width: 540px) {
+    #MainVisual {
+        h3 {
+            font-size: 40rem;
+        }
+    }
+}
+
+/* MainContent */
+
+#MainContent {
+    .inner {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30rem;
+
+        .img_box {
+            margin: 0 0 20rem 0;
+        }
+
+        & strong {
+            display: block;
+            margin: 0 0 20rem 0;
+            font-weight: 500;
+        }
+    }
+}
+
+@media (max-width: 540px) {
+    #MainContent {
+        .inner {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}
+
+/* MainEvent */
+#MainEvent {
+    background: var(--line);
+
+    .sbar {
+        position: relative;
+        max-width: 1170rem;
+        margin: 30rem auto;
+        background: var(--gc50);
+
+        height: 20rem;
+        border-radius: 10rem;
+        overflow: hidden;
+
+        & span {
+            background: tomato;
+        }
+    }
+}
+
+/* Footer */
+#Footer {
+    .inner {
+        display: grid;
+        grid-template-columns: 150rem 1fr;
+        gap: 30rem;
+    }
+}
+
+@media (max-width: 540px) {
+    #Footer .inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*  레스팅? nesting 네스팅이래
+    23.03부터 할수있게된건데 갤럭시 지원없어
+    #Footer {
+    
+    & address {
+        color: #555;
+    }
+
+    .inner {
+        display: grid;
+        grid-template-columns: 150rem 1fr;
+        gap: 30rem;
+    }
+} */
+
+/* @media (width <=768px) {
+    #Footer {
+    
+        & address {
+            color: #666;
+        }
+    
+        .inner {
+            display: grid;
+            grid-template-columns: 150rem 1fr;
+            gap: 30rem;
+        }
+    }
+} */
